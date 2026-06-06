@@ -7,17 +7,17 @@
     <title>Taha Qureshi | Portfolio</title>
     <style>
       :root {
-        --bg: #f4efe6;
-        --bg-2: #e8dcc9;
-        --card: rgba(255, 255, 255, 0.72);
-        --card-strong: rgba(255, 250, 244, 0.92);
-        --text: #1f1a17;
-        --muted: #6f6258;
-        --accent: #c55a2a;
-        --accent-2: #2f6f5e;
-        --accent-3: #8c4a9f;
-        --line: rgba(31, 26, 23, 0.12);
-        --shadow: 0 24px 80px rgba(58, 35, 16, 0.14);
+        --bg: #fff4f8;
+        --bg-2: #ffeaf2;
+        --card: rgba(255, 255, 255, 0.86);
+        --card-strong: rgba(255, 247, 251, 0.96);
+        --text: #32202a;
+        --muted: #6b5160;
+        --accent: #e85aa4; /* pink */
+        --accent-2: #ff89b2; /* lighter pink */
+        --accent-3: #b64b8a; /* deep pink */
+        --line: rgba(50, 32, 42, 0.08);
+        --shadow: 0 24px 80px rgba(179, 81, 119, 0.08);
         --radius: 28px;
       }
 
@@ -34,9 +34,9 @@
         font-family: Georgia, "Times New Roman", serif;
         color: var(--text);
         background:
-          radial-gradient(circle at top left, rgba(197, 90, 42, 0.18), transparent 28%),
-          radial-gradient(circle at top right, rgba(47, 111, 94, 0.16), transparent 24%),
-          linear-gradient(180deg, #faf4ea 0%, var(--bg) 50%, #efe4d5 100%);
+          radial-gradient(circle at top left, rgba(232, 90, 148, 0.12), transparent 28%),
+          radial-gradient(circle at top right, rgba(255, 137, 178, 0.10), transparent 24%),
+          linear-gradient(180deg, #fff7fb 0%, var(--bg) 50%, #fff0f6 100%);
         min-height: 100vh;
         overflow-x: hidden;
       }
@@ -55,39 +55,39 @@
         z-index: -1;
       }
 
-      body::before {
-        top: -8rem;
-        left: -10rem;
-        background: #e5a46d;
-      }
-
-      body::after {
-        bottom: -10rem;
-        right: -8rem;
-        background: #92c6b6;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      .shell {
-        width: min(1180px, calc(100% - 32px));
-        margin: 0 auto;
-        padding: 24px 0 48px;
-      }
-
-      .topbar {
-        position: sticky;
-        top: 16px;
-        z-index: 10;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        padding: 14px 18px;
-        border: 1px solid var(--line);
+        data: {
+          title: 'A calm, analytical builder.',
+          copy:
+            'Taha reads patterns fast, communicates clearly, and turns everyday observations into practical insight.',
+          strength: 'Fast interpretation',
+          vibe: 'Grounded and sharp',
+          focus: 'Part-time data science',
+          base: 'BZU student life',
+          badge: 'Data mode active',
+          accent: 'linear-gradient(135deg, #e85aa4, #ff89b2)'
+        },
+        sister: {
+          title: 'Protective, expressive, and proud.',
+          copy:
+            'Big sister energy with a direct voice, strong instincts, and enough heart to keep everything centered.',
+          strength: 'Loyal support',
+          vibe: 'Bold and expressive',
+          focus: 'Family-first presence',
+          base: 'Always on duty',
+          badge: 'Sister mode active',
+          accent: 'linear-gradient(135deg, #b64b8a, #e85aa4)'
+        },
+        bzu: {
+          title: 'Campus life with serious momentum.',
+          copy:
+            'Studying at BZU while building the habits, projects, and confidence needed for the next chapter.',
+          strength: 'Growing fast',
+          vibe: 'Focused and curious',
+          focus: 'Academic progress',
+          base: 'BZU campus',
+          badge: 'BZU mode active',
+          accent: 'linear-gradient(135deg, #ff89b2, #e85aa4)'
+        }
         border-radius: 999px;
         background: rgba(255, 251, 245, 0.72);
         backdrop-filter: blur(18px);
@@ -110,7 +110,7 @@
         place-items: center;
         color: white;
         background: linear-gradient(135deg, var(--accent), var(--accent-2));
-        box-shadow: 0 10px 24px rgba(197, 90, 42, 0.28);
+        box-shadow: 0 10px 24px rgba(232, 90, 148, 0.16);
         font-weight: 700;
       }
 
@@ -318,8 +318,8 @@
         border-radius: 42% 58% 54% 46% / 46% 35% 65% 54%;
         background:
           radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.15) 42%),
-          linear-gradient(135deg, rgba(197, 90, 42, 0.94), rgba(47, 111, 94, 0.88));
-        box-shadow: inset -18px -18px 44px rgba(0, 0, 0, 0.16), 0 18px 40px rgba(60, 34, 18, 0.16);
+          linear-gradient(135deg, rgba(232, 90, 148, 0.98), rgba(255, 137, 178, 0.9));
+        box-shadow: inset -18px -18px 44px rgba(0, 0, 0, 0.08), 0 18px 40px rgba(179, 81, 119, 0.12);
         display: grid;
         place-items: center;
         color: white;
@@ -502,7 +502,7 @@
         display: inline-flex;
         padding: 8px 10px;
         border-radius: 999px;
-        background: rgba(197, 90, 42, 0.12);
+        background: rgba(232, 90, 148, 0.10);
         color: var(--accent);
         font-size: 0.84rem;
         font-family: "Trebuchet MS", "Gill Sans", sans-serif;
@@ -664,7 +664,7 @@
           <div class="brand-mark">TQ</div>
           <div class="brand-copy">
             <strong>Taha Qureshi</strong>
-            <span>Data scientist, student, and family powerhouse</span>
+            <span>Data scientist, student, and sister powerhouse</span>
           </div>
         </div>
         <nav class="nav" aria-label="Primary">
@@ -683,7 +683,7 @@
             <h1>Taha Qureshi</h1>
             <p class="lede" id="heroText">
               A part-time data scientist and full-time sister from BZU, blending analysis,
-              intuition, and a strong personality into one sharp, memorable profile.
+              intuition, and a bold, memorable voice.
             </p>
             <div class="hero-actions">
               <a class="button primary" href="#projects">See highlights</a>
@@ -945,18 +945,18 @@
           focus: 'Part-time data science',
           base: 'BZU student life',
           badge: 'Data mode active',
-          accent: 'linear-gradient(135deg, #c55a2a, #2f6f5e)'
+          accent: 'linear-gradient(135deg, #e85aa4, #ff89b2)'
         },
-        sister: {
-          title: 'Protective, expressive, and proud.',
+        professional: {
+          title: 'Professional, focused, and collaborative.',
           copy:
-            'Big sister energy with a direct voice, strong instincts, and enough heart to keep everything centered.',
-          strength: 'Loyal support',
-          vibe: 'Bold and expressive',
-          focus: 'Family-first presence',
-          base: 'Always on duty',
-          badge: 'Sister mode active',
-          accent: 'linear-gradient(135deg, #8c4a9f, #c55a2a)'
+            'Brings focused professionalism, clear communication, and collaborative energy to projects.',
+          strength: 'Professionalism',
+          vibe: 'Focused and collaborative',
+          focus: 'Applied projects',
+          base: 'Professional projects',
+          badge: 'Professional mode active',
+          accent: 'linear-gradient(135deg, #b64b8a, #e85aa4)'
         },
         bzu: {
           title: 'Campus life with serious momentum.',
@@ -967,7 +967,7 @@
           focus: 'Academic progress',
           base: 'BZU campus',
           badge: 'BZU mode active',
-          accent: 'linear-gradient(135deg, #2f6f5e, #c55a2a)'
+          accent: 'linear-gradient(135deg, #ff89b2, #e85aa4)'
         }
       };
 
@@ -997,9 +997,10 @@
         heroText.textContent = state.copy;
         portraitBlob.textContent = mode === 'sister' ? 'S' : mode === 'bzu' ? 'BZU' : 'TQ';
         document.querySelector('.portrait-badge').textContent = state.badge;
-        root.style.setProperty('--accent', mode === 'sister' ? '#8c4a9f' : '#c55a2a');
-        root.style.setProperty('--accent-2', '#2f6f5e');
-        root.style.setProperty('--accent-3', mode === 'sister' ? '#7a3f8d' : '#8c4a9f');
+        // use the palette-aligned accents
+        root.style.setProperty('--accent', mode === 'sister' ? '#b64b8a' : '#e85aa4');
+        root.style.setProperty('--accent-2', '#ff89b2');
+        root.style.setProperty('--accent-3', mode === 'sister' ? '#8c4a9f' : '#b64b8a');
         chips.forEach((chip) => chip.classList.toggle('active', chip.dataset.mode === mode));
       }
 
