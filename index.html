@@ -1,0 +1,1031 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Interactive portfolio website for Taha Qureshi" />
+    <title>Taha Qureshi | Portfolio</title>
+    <style>
+      :root {
+        --bg: #f4efe6;
+        --bg-2: #e8dcc9;
+        --card: rgba(255, 255, 255, 0.72);
+        --card-strong: rgba(255, 250, 244, 0.92);
+        --text: #1f1a17;
+        --muted: #6f6258;
+        --accent: #c55a2a;
+        --accent-2: #2f6f5e;
+        --accent-3: #8c4a9f;
+        --line: rgba(31, 26, 23, 0.12);
+        --shadow: 0 24px 80px rgba(58, 35, 16, 0.14);
+        --radius: 28px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(197, 90, 42, 0.18), transparent 28%),
+          radial-gradient(circle at top right, rgba(47, 111, 94, 0.16), transparent 24%),
+          linear-gradient(180deg, #faf4ea 0%, var(--bg) 50%, #efe4d5 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        inset: auto;
+        width: 30rem;
+        height: 30rem;
+        border-radius: 50%;
+        filter: blur(70px);
+        opacity: 0.28;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      body::before {
+        top: -8rem;
+        left: -10rem;
+        background: #e5a46d;
+      }
+
+      body::after {
+        bottom: -10rem;
+        right: -8rem;
+        background: #92c6b6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .shell {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0 48px;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 16px;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 18px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 251, 245, 0.72);
+        backdrop-filter: blur(18px);
+        box-shadow: 0 12px 30px rgba(74, 47, 24, 0.08);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+        letter-spacing: 0.04em;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        color: white;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        box-shadow: 0 10px 24px rgba(197, 90, 42, 0.28);
+        font-weight: 700;
+      }
+
+      .brand-copy {
+        display: grid;
+        line-height: 1.1;
+      }
+
+      .brand-copy strong {
+        font-size: 0.98rem;
+      }
+
+      .brand-copy span {
+        color: var(--muted);
+        font-size: 0.84rem;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .nav a,
+      .nav button {
+        border: 1px solid transparent;
+        background: transparent;
+        color: var(--text);
+        font: inherit;
+        font-size: 0.95rem;
+        padding: 10px 14px;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+      }
+
+      .nav a:hover,
+      .nav button:hover,
+      .nav a:focus-visible,
+      .nav button:focus-visible {
+        transform: translateY(-1px);
+        border-color: var(--line);
+        background: rgba(255, 255, 255, 0.78);
+        outline: none;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.18fr 0.82fr;
+        gap: 24px;
+        align-items: center;
+        padding: 26px 0 18px;
+      }
+
+      .hero-copy {
+        padding: 28px 0;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid var(--line);
+        color: var(--muted);
+        font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-size: 0.76rem;
+      }
+
+      h1 {
+        margin: 18px 0 14px;
+        font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+        font-size: clamp(3rem, 7vw, 5.8rem);
+        line-height: 0.92;
+        letter-spacing: -0.05em;
+      }
+
+      .lede {
+        max-width: 58ch;
+        font-size: 1.12rem;
+        line-height: 1.8;
+        color: var(--muted);
+        margin-bottom: 28px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 14px 18px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--text);
+        font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+        font-size: 0.98rem;
+        cursor: pointer;
+        transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+      }
+
+      .button:hover,
+      .button:focus-visible {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 30px rgba(62, 37, 16, 0.12);
+        outline: none;
+      }
+
+      .button.primary {
+        background: linear-gradient(135deg, var(--accent), #e1783e);
+        color: white;
+        border-color: transparent;
+      }
+
+      .button.secondary {
+        background: rgba(255, 255, 255, 0.5);
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .stat {
+        padding: 16px;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid var(--line);
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.5rem;
+        font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      .hero-card {
+        position: relative;
+        border-radius: 34px;
+        padding: 22px;
+        min-height: 520px;
+        background: linear-gradient(160deg, rgba(255, 255, 255, 0.78), rgba(255, 248, 241, 0.58));
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .hero-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(135deg, rgba(197, 90, 42, 0.16), transparent 48%),
+          linear-gradient(315deg, rgba(47, 111, 94, 0.14), transparent 42%);
+        pointer-events: none;
+      }
+
+      .portrait {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 16px;
+        height: 100%;
+      }
+
+      .portrait-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: start;
+      }
+
+      .portrait-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 12px;
+        border-radius: 999px;
+        background: rgba(31, 26, 23, 0.08);
+        font-size: 0.86rem;
+        color: var(--muted);
+      }
+
+      .portrait-blob {
+        width: 160px;
+        height: 160px;
+        border-radius: 42% 58% 54% 46% / 46% 35% 65% 54%;
+        background:
+          radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.15) 42%),
+          linear-gradient(135deg, rgba(197, 90, 42, 0.94), rgba(47, 111, 94, 0.88));
+        box-shadow: inset -18px -18px 44px rgba(0, 0, 0, 0.16), 0 18px 40px rgba(60, 34, 18, 0.16);
+        display: grid;
+        place-items: center;
+        color: white;
+        font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .portrait-panel {
+        margin-top: auto;
+        border-radius: 28px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.82);
+        border: 1px solid var(--line);
+      }
+
+      .mode-toggle {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 16px;
+      }
+
+      .chip {
+        border: 1px solid var(--line);
+        background: white;
+        color: var(--text);
+        padding: 10px 14px;
+        border-radius: 999px;
+        cursor: pointer;
+        font: inherit;
+        transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+      }
+
+      .chip.active {
+        background: var(--text);
+        color: white;
+      }
+
+      .chip:hover,
+      .chip:focus-visible {
+        transform: translateY(-1px);
+        outline: none;
+      }
+
+      .profile-title {
+        margin: 0 0 10px;
+        font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+        font-size: 1.7rem;
+      }
+
+      .profile-copy {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .profile-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .profile-item {
+        padding: 14px;
+        border-radius: 18px;
+        background: rgba(244, 239, 230, 0.92);
+        border: 1px solid rgba(31, 26, 23, 0.08);
+      }
+
+      .profile-item strong {
+        display: block;
+        margin-bottom: 4px;
+        font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+      }
+
+      .section {
+        margin-top: 28px;
+        padding: 26px;
+        border-radius: 32px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        backdrop-filter: blur(18px);
+        box-shadow: var(--shadow);
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: end;
+        margin-bottom: 20px;
+      }
+
+      .section-header h2 {
+        margin: 0;
+        font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+        font-size: clamp(1.7rem, 4vw, 2.5rem);
+      }
+
+      .section-header p {
+        margin: 0;
+        color: var(--muted);
+        max-width: 54ch;
+        line-height: 1.7;
+      }
+
+      .grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .card-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .info-card,
+      .project-card,
+      .timeline-card {
+        border-radius: 24px;
+        border: 1px solid rgba(31, 26, 23, 0.1);
+        background: rgba(255, 255, 255, 0.72);
+        padding: 18px;
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+
+      .info-card:hover,
+      .project-card:hover,
+      .timeline-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 36px rgba(54, 33, 17, 0.11);
+      }
+
+      .info-card h3,
+      .project-card h3,
+      .timeline-card h3 {
+        margin: 0 0 10px;
+        font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+      }
+
+      .info-card p,
+      .project-card p,
+      .timeline-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .pill {
+        padding: 8px 10px;
+        border-radius: 999px;
+        background: rgba(31, 26, 23, 0.06);
+        color: var(--text);
+        font-size: 0.88rem;
+      }
+
+      .projects {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .project-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .project-badge {
+        display: inline-flex;
+        padding: 8px 10px;
+        border-radius: 999px;
+        background: rgba(197, 90, 42, 0.12);
+        color: var(--accent);
+        font-size: 0.84rem;
+        font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+      }
+
+      .project-action {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 14px;
+        font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+        color: var(--accent-2);
+      }
+
+      .timeline {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      .timeline-card .year {
+        display: inline-flex;
+        margin-bottom: 10px;
+        font-weight: 700;
+        color: var(--accent-3);
+        font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 16px;
+      }
+
+      .contact-card {
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(31, 26, 23, 0.1);
+        padding: 18px;
+      }
+
+      .contact-card h3 {
+        margin-top: 0;
+        font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+      }
+
+      .contact-links {
+        display: grid;
+        gap: 10px;
+      }
+
+      .contact-link {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 16px;
+        border-radius: 18px;
+        border: 1px solid rgba(31, 26, 23, 0.1);
+        background: rgba(250, 246, 240, 0.8);
+      }
+
+      .contact-link span {
+        color: var(--muted);
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+        padding: 22px 8px 0;
+        color: var(--muted);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 650ms ease, transform 650ms ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(-2deg);
+        }
+        50% {
+          transform: translateY(-10px) rotate(2deg);
+        }
+      }
+
+      @media (max-width: 980px) {
+        .hero,
+        .contact-grid,
+        .section-header,
+        .card-grid,
+        .projects,
+        .timeline {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          gap: 18px;
+        }
+
+        .hero-stats {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .topbar {
+          border-radius: 26px;
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .nav {
+          justify-content: space-between;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .shell {
+          width: min(100% - 20px, 1180px);
+          padding-top: 10px;
+        }
+
+        .topbar,
+        .section,
+        .hero-card {
+          border-radius: 24px;
+        }
+
+        h1 {
+          font-size: clamp(2.5rem, 14vw, 4.2rem);
+        }
+
+        .hero-stats {
+          grid-template-columns: 1fr;
+        }
+
+        .profile-list {
+          grid-template-columns: 1fr;
+        }
+
+        .portrait-blob {
+          width: 128px;
+          height: 128px;
+          font-size: 1.6rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar reveal">
+        <div class="brand">
+          <div class="brand-mark">TQ</div>
+          <div class="brand-copy">
+            <strong>Taha Qureshi</strong>
+            <span>Data scientist, student, and family powerhouse</span>
+          </div>
+        </div>
+        <nav class="nav" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+          <button id="themeButton" type="button">Flip the mood</button>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-copy reveal">
+            <span class="eyebrow">Interactive portfolio</span>
+            <h1>Taha Qureshi</h1>
+            <p class="lede" id="heroText">
+              A part-time data scientist and full-time sister from BZU, blending analysis,
+              intuition, and a strong personality into one sharp, memorable profile.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#projects">See highlights</a>
+              <a class="button secondary" href="#contact">Say hello</a>
+            </div>
+            <div class="hero-stats">
+              <div class="stat">
+                <strong>01</strong>
+                <span>Bold identity</span>
+              </div>
+              <div class="stat">
+                <strong>02</strong>
+                <span>Data thinking</span>
+              </div>
+              <div class="stat">
+                <strong>03</strong>
+                <span>BZU life</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="hero-card reveal" aria-label="Profile spotlight">
+            <div class="portrait">
+              <div class="portrait-head">
+                <div>
+                  <div class="portrait-badge">Live profile card</div>
+                  <p style="margin: 14px 0 0; color: var(--muted); line-height: 1.7; max-width: 30ch;">
+                    Switch the mode to update the tone of the intro without leaving the page.
+                  </p>
+                </div>
+                <div class="portrait-blob" id="portraitBlob">TQ</div>
+              </div>
+
+              <div class="portrait-panel">
+                <div class="mode-toggle" role="tablist" aria-label="Profile modes">
+                  <button class="chip active" type="button" data-mode="data">Data mode</button>
+                  <button class="chip" type="button" data-mode="sister">Sister mode</button>
+                  <button class="chip" type="button" data-mode="bzu">BZU mode</button>
+                </div>
+                <h2 class="profile-title" id="profileTitle">A calm, analytical builder.</h2>
+                <p class="profile-copy" id="profileCopy">
+                  Taha reads patterns fast, communicates clearly, and turns everyday observations
+                  into practical insight.
+                </p>
+                <div class="profile-list">
+                  <div class="profile-item">
+                    <strong>Strength</strong>
+                    <span id="strengthText">Fast interpretation</span>
+                  </div>
+                  <div class="profile-item">
+                    <strong>Vibe</strong>
+                    <span id="vibeText">Grounded and sharp</span>
+                  </div>
+                  <div class="profile-item">
+                    <strong>Focus</strong>
+                    <span id="focusText">Part-time data science</span>
+                  </div>
+                  <div class="profile-item">
+                    <strong>Base</strong>
+                    <span id="baseText">BZU student life</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <section id="about" class="section reveal">
+          <div class="section-header">
+            <div>
+              <h2>About Taha</h2>
+              <p>
+                Built like a compact personal brand: equal parts data curiosity, sibling energy,
+                and a clear sense of self.
+              </p>
+            </div>
+          </div>
+          <div class="grid card-grid">
+            <article class="info-card">
+              <h3>Part-time data scientist</h3>
+              <p>
+                Loves finding meaning in numbers, shaping raw datasets into decisions that are easy to trust.
+              </p>
+              <div class="pill-row">
+                <span class="pill">Analysis</span>
+                <span class="pill">Visualization</span>
+                <span class="pill">Insight</span>
+              </div>
+            </article>
+            <article class="info-card">
+              <h3>Full-time sister</h3>
+              <p>
+                Always present, always opinionated, and always ready to protect the people she cares about.
+              </p>
+              <div class="pill-row">
+                <span class="pill">Loyal</span>
+                <span class="pill">Direct</span>
+                <span class="pill">Protective</span>
+              </div>
+            </article>
+            <article class="info-card">
+              <h3>Student at BZU</h3>
+              <p>
+                Balancing classes, projects, and real life while building a strong foundation for what comes next.
+              </p>
+              <div class="pill-row">
+                <span class="pill">Growth</span>
+                <span class="pill">Campus life</span>
+                <span class="pill">Ambition</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="skills" class="section reveal">
+          <div class="section-header">
+            <div>
+              <h2>Skills Snapshot</h2>
+              <p>
+                A quick look at the mix that powers the portfolio.
+              </p>
+            </div>
+          </div>
+          <div class="grid card-grid">
+            <article class="info-card">
+              <h3>Data workflow</h3>
+              <p>Cleaning, exploring, and translating data into something useful.</p>
+            </article>
+            <article class="info-card">
+              <h3>Communication</h3>
+              <p>Direct, expressive, and able to make a point without wasting words.</p>
+            </article>
+            <article class="info-card">
+              <h3>Energy management</h3>
+              <p>Big personality, strong boundaries, and enough self-awareness to keep it real.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="projects" class="section reveal">
+          <div class="section-header">
+            <div>
+              <h2>Featured Highlights</h2>
+              <p>
+                These cards are styled like portfolio projects, but they double as personality markers.
+              </p>
+            </div>
+          </div>
+          <div class="grid projects">
+            <article class="project-card">
+              <div class="project-meta">
+                <span class="project-badge">Insight engine</span>
+                <span>01</span>
+              </div>
+              <h3>Numbers into narrative</h3>
+              <p>
+                Turns messy data into a story that people can understand quickly and act on with confidence.
+              </p>
+              <div class="project-action">Built for clarity <span aria-hidden="true">→</span></div>
+            </article>
+            <article class="project-card">
+              <div class="project-meta">
+                <span class="project-badge">Family mode</span>
+                <span>02</span>
+              </div>
+              <h3>Always-on sister energy</h3>
+              <p>
+                A bold, loyal presence that brings honesty, humor, and strong opinions to every room.
+              </p>
+              <div class="project-action">Big presence <span aria-hidden="true">→</span></div>
+            </article>
+          </div>
+        </section>
+
+        <section id="timeline" class="section reveal">
+          <div class="section-header">
+            <div>
+              <h2>Journey</h2>
+              <p>
+                A simple timeline for school, skill building, and personal growth.
+              </p>
+            </div>
+          </div>
+          <div class="grid timeline">
+            <article class="timeline-card">
+              <span class="year">Now</span>
+              <h3>BZU student</h3>
+              <p>Studying while building confidence, consistency, and practical experience.</p>
+            </article>
+            <article class="timeline-card">
+              <span class="year">In progress</span>
+              <h3>Data science growth</h3>
+              <p>Learning to use Python, analysis, and visualization to solve useful problems.</p>
+            </article>
+            <article class="timeline-card">
+              <span class="year">Always</span>
+              <h3>Family-first mindset</h3>
+              <p>Protective, caring, and proud to show up for the people who matter.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="contact" class="section reveal">
+          <div class="section-header">
+            <div>
+              <h2>Contact</h2>
+              <p>
+                Replace these placeholders with real links when you are ready to publish.
+              </p>
+            </div>
+          </div>
+          <div class="contact-grid">
+            <div class="contact-card">
+              <h3>Let the page speak for itself</h3>
+              <p class="profile-copy">
+                This layout is ready to customize with a photo, live projects, a resume link, or social profiles.
+              </p>
+              <div class="pill-row">
+                <span class="pill">Responsive</span>
+                <span class="pill">Interactive</span>
+                <span class="pill">Single-file</span>
+              </div>
+            </div>
+            <div class="contact-card">
+              <h3>Links</h3>
+              <div class="contact-links">
+                <a class="contact-link" href="mailto:taha@example.com">
+                  <strong>Email</strong>
+                  <span>taha@example.com</span>
+                </a>
+                <a class="contact-link" href="#">
+                  <strong>LinkedIn</strong>
+                  <span>Add profile link</span>
+                </a>
+                <a class="contact-link" href="#">
+                  <strong>Portfolio</strong>
+                  <span>Add project link</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Built for Taha Qureshi</span>
+        <span>Interactive portfolio page</span>
+      </footer>
+    </div>
+
+    <script>
+      const modes = {
+        data: {
+          title: 'A calm, analytical builder.',
+          copy:
+            'Taha reads patterns fast, communicates clearly, and turns everyday observations into practical insight.',
+          strength: 'Fast interpretation',
+          vibe: 'Grounded and sharp',
+          focus: 'Part-time data science',
+          base: 'BZU student life',
+          badge: 'Data mode active',
+          accent: 'linear-gradient(135deg, #c55a2a, #2f6f5e)'
+        },
+        sister: {
+          title: 'Protective, expressive, and proud.',
+          copy:
+            'Big sister energy with a direct voice, strong instincts, and enough heart to keep everything centered.',
+          strength: 'Loyal support',
+          vibe: 'Bold and expressive',
+          focus: 'Family-first presence',
+          base: 'Always on duty',
+          badge: 'Sister mode active',
+          accent: 'linear-gradient(135deg, #8c4a9f, #c55a2a)'
+        },
+        bzu: {
+          title: 'Campus life with serious momentum.',
+          copy:
+            'Studying at BZU while building the habits, projects, and confidence needed for the next chapter.',
+          strength: 'Growing fast',
+          vibe: 'Focused and curious',
+          focus: 'Academic progress',
+          base: 'BZU campus',
+          badge: 'BZU mode active',
+          accent: 'linear-gradient(135deg, #2f6f5e, #c55a2a)'
+        }
+      };
+
+      const heroText = document.getElementById('heroText');
+      const profileTitle = document.getElementById('profileTitle');
+      const profileCopy = document.getElementById('profileCopy');
+      const strengthText = document.getElementById('strengthText');
+      const vibeText = document.getElementById('vibeText');
+      const focusText = document.getElementById('focusText');
+      const baseText = document.getElementById('baseText');
+      const portraitBlob = document.getElementById('portraitBlob');
+      const themeButton = document.getElementById('themeButton');
+      const chips = Array.from(document.querySelectorAll('.chip'));
+      const revealNodes = Array.from(document.querySelectorAll('.reveal'));
+      const root = document.documentElement;
+      let currentMode = 'data';
+
+      function applyMode(mode) {
+        const state = modes[mode] || modes.data;
+        currentMode = mode;
+        profileTitle.textContent = state.title;
+        profileCopy.textContent = state.copy;
+        strengthText.textContent = state.strength;
+        vibeText.textContent = state.vibe;
+        focusText.textContent = state.focus;
+        baseText.textContent = state.base;
+        heroText.textContent = state.copy;
+        portraitBlob.textContent = mode === 'sister' ? 'S' : mode === 'bzu' ? 'BZU' : 'TQ';
+        document.querySelector('.portrait-badge').textContent = state.badge;
+        root.style.setProperty('--accent', mode === 'sister' ? '#8c4a9f' : '#c55a2a');
+        root.style.setProperty('--accent-2', '#2f6f5e');
+        root.style.setProperty('--accent-3', mode === 'sister' ? '#7a3f8d' : '#8c4a9f');
+        chips.forEach((chip) => chip.classList.toggle('active', chip.dataset.mode === mode));
+      }
+
+      chips.forEach((chip) => {
+        chip.addEventListener('click', () => applyMode(chip.dataset.mode));
+      });
+
+      themeButton.addEventListener('click', () => {
+        const next = currentMode === 'data' ? 'sister' : currentMode === 'sister' ? 'bzu' : 'data';
+        applyMode(next);
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      revealNodes.forEach((node) => observer.observe(node));
+      applyMode('data');
+    </script>
+  </body>
+</html>
